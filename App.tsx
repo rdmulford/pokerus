@@ -1,20 +1,28 @@
 import {Berries} from 'pokenode-ts';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {NativeBaseProvider, Box} from 'native-base';
 import {getBerry} from './src/api/berry';
+import styled from 'styled-components/native';
+
+const Title = styled.Text`
+  color: palevioletred;
+`;
+
+const Wrapper = styled.View`
+  background: papayawhip;
+`;
 
 const App = () => {
   getBerry(Berries.AGUAV);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <Text>Hello, world!</Text>
-    </View>
+    <NativeBaseProvider>
+      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
+        <Wrapper>
+          <Title>Pokerus</Title>
+        </Wrapper>
+      </Box>
+    </NativeBaseProvider>
   );
 };
 export default App;

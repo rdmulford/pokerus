@@ -17,3 +17,8 @@ yarn start
 # start ios simulator
 yarn ios
 ```
+
+## Notes
+
+- api: https://pokeapi.co/
+- Typescript api wrapper: https://github.com/Gabb-c/pokenode-ts

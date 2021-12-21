@@ -1,27 +1,31 @@
 import {Berries} from 'pokenode-ts';
 import React from 'react';
-import {NativeBaseProvider, Box} from 'native-base';
+import {
+  NativeBaseProvider,
+  useColorMode,
+  useColorModeValue,
+  Center,
+  Button,
+} from 'native-base';
 import {getBerry} from './src/api/berry';
-import styled from 'styled-components/native';
+import Footer from './src/components/Footer';
 
-const Title = styled.Text`
-  color: palevioletred;
-`;
-
-const Wrapper = styled.View`
-  background: papayawhip;
-`;
+function UseColorMode() {
+  const {toggleColorMode} = useColorMode();
+  return (
+    <Center flex="1" bg={useColorModeValue('warmGray.50', 'coolGray.800')}>
+      <Button onPress={toggleColorMode}>Toggle</Button>
+    </Center>
+  );
+}
 
 const App = () => {
   getBerry(Berries.AGUAV);
 
   return (
     <NativeBaseProvider>
-      <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-        <Wrapper>
-          <Title>Pokerus</Title>
-        </Wrapper>
-      </Box>
+      <UseColorMode />
+      <Footer />
     </NativeBaseProvider>
   );
 };

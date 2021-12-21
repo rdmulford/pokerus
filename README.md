@@ -1,5 +1,7 @@
 # Pokerus
 
+pokedex app
+
 ## Development
 
 env setup: https://reactnative.dev/docs/environment-setup

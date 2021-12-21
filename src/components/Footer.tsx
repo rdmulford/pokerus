@@ -33,7 +33,8 @@ const Footer = () => {
             <Text
               color={useColorModeValue('darkText', 'lightText')}
               fontSize="12">
-              Home
+              {' '}
+              Home{' '}
             </Text>
           </Center>
         </Pressable>

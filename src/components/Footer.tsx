@@ -9,6 +9,7 @@ import {
   SearchIcon,
   MoonIcon,
   SunIcon,
+  AddIcon,
   useColorModeValue,
 } from 'native-base';
 
@@ -30,12 +31,7 @@ const Footer = () => {
           onPress={() => setSelected(0)}>
           <Center>
             <SunIcon size="4" />
-            <Text
-              color={useColorModeValue('darkText', 'lightText')}
-              fontSize="12">
-              {' '}
-              Home{' '}
-            </Text>
+            <Text fontSize="12"> Pokedex </Text>
           </Center>
         </Pressable>
         <Pressable
@@ -46,11 +42,7 @@ const Footer = () => {
           onPress={() => setSelected(1)}>
           <Center>
             <MoonIcon size="4" />
-            <Text
-              color={useColorModeValue('darkText', 'lightText')}
-              fontSize="12">
-              Pokedex
-            </Text>
+            <Text fontSize="12">Moves</Text>
           </Center>
         </Pressable>
         <Pressable
@@ -61,9 +53,7 @@ const Footer = () => {
           onPress={() => setSelected(2)}>
           <Center>
             <SearchIcon size="4" />
-            <Text color={useColorModeValue('darkText', 'lightText')}>
-              Movedex
-            </Text>
+            <Text fontSize="12">Type Chart</Text>
           </Center>
         </Pressable>
         <Pressable
@@ -74,11 +64,18 @@ const Footer = () => {
           onPress={() => setSelected(3)}>
           <Center>
             <CheckIcon size="4" />
-            <Text
-              color={useColorModeValue('darkText', 'lightText')}
-              fontSize="12">
-              Settings
-            </Text>
+            <Text fontSize="12">Abilities</Text>
+          </Center>
+        </Pressable>
+        <Pressable
+          cursor="pointer"
+          opacity={selected === 4 ? 1 : 0.5}
+          py="2"
+          flex={1}
+          onPress={() => setSelected(4)}>
+          <Center>
+            <AddIcon size="4" />
+            <Text fontSize="12">Items</Text>
           </Center>
         </Pressable>
       </HStack>

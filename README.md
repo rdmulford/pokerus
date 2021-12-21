@@ -11,6 +11,10 @@ nvm use
 # install
 yarn install
 
+# install pods
+cd ios
+pod install
+
 # start metro
 yarn start
 
@@ -54,3 +58,8 @@ git push -u origin <branch>
 
 - api: https://pokeapi.co/
 - Typescript api wrapper: https://github.com/Gabb-c/pokenode-ts
+
+## Contributors
+
+- @rdmulford
+- @mulfordkl

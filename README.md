@@ -18,6 +18,38 @@ yarn start
 yarn ios
 ```
 
+## branch stategy
+
+```sh
+# get latest from main
+
+git checkout main
+git fetch
+git pull
+
+# create new local branch
+git checkout -b <feature-branch>
+
+# make code changes
+# use git add <files> and git commit as you go
+
+# (if needed) get latest from main
+git checkout main
+git fetch
+git pull
+git checkout <feature-branch>
+git merge main
+# resolve conflicts
+
+# add changes and push up branch
+git add <files> # can use git add . to add all
+git commit -m "commit message"
+git push -u origin <branch>
+
+# create a pull-request
+# can use gh cli or just in github ui
+```
+
 ## Notes
 
 - api: https://pokeapi.co/

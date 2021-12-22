@@ -8,6 +8,7 @@ import {
   Button,
 } from 'native-base';
 import {getBerry} from './src/api/berry';
+import {getPokemonList} from './src/api/pokemon';
 import Footer from './src/components/Footer';
 
 function UseColorMode() {
@@ -21,6 +22,7 @@ function UseColorMode() {
 
 const App = () => {
   getBerry(Berries.AGUAV);
+  getPokemonList();
 
   return (
     <NativeBaseProvider>

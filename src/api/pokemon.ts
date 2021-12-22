@@ -1,6 +1,6 @@
 import {PokemonClient} from 'pokenode-ts';
 
-// getBerry returns berry info
+// getPokemonList returns a list of all pokemon
 // TODO currently just prints stuff to console
 export const getPokemonList = async () => {
   const api = new PokemonClient({

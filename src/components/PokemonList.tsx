@@ -1,6 +1,6 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {Box, List, Center, useColorModeValue, ScrollView} from 'native-base';
+import {Box, ScrollView, HStack, VStack, Text} from 'native-base';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([]);
@@ -16,21 +16,20 @@ const PokemonList = () => {
   };
 
   React.useEffect(() => {
+    console.log('no');
     fetchPokemon();
   }, []);
 
   return (
     <ScrollView>
       <Box flex={1}>
-        <Center
-          flex={1}
-          bg={useColorModeValue('warmGray.50', 'coolGray.800')}
-        />
-        <List>
+        <VStack space={3} w="90%">
           {pokemon.map(mon => (
-            <List.Item key={mon.id}>{mon.name}</List.Item>
+            <HStack justifyContent="space-between">
+              <Text key={mon.id}>{mon.name}</Text>
+            </HStack>
           ))}
-        </List>
+        </VStack>
       </Box>
     </ScrollView>
   );

@@ -6,7 +6,7 @@ export const getPokemonList = async (): Promise<
   void | NamedAPIResource[] | APIResource[]
 > => {
   const api = new PokemonClient({
-    cacheOptions: {maxAge: 5000, exclude: {query: false}},
+    cacheOptions: {maxAge: 500000, exclude: {query: false}},
   });
   return await api
     .listPokemons(0, 1200)

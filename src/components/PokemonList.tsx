@@ -22,7 +22,7 @@ const PokemonList = () => {
 
   return (
     <ScrollView>
-      <Box flex={1}>
+      <Box overflow={'hidden'}>
         <VStack space={3} w="90%">
           {pokemon.map(mon => (
             <HStack justifyContent="space-between">

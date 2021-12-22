@@ -12,9 +12,17 @@ import {
   AddIcon,
   useColorModeValue,
 } from 'native-base';
+import {useGlobalDispatch, useGlobalState} from './Global';
 
 const Footer = () => {
-  const [selected, setSelected] = React.useState(1);
+  const [viewState] = useGlobalState();
+  const [setViewState] = useGlobalDispatch();
+
+  const onPressHook = (view: number) => {
+    setViewState(view);
+    console.log('Current view state: ', view);
+  };
+
   return (
     <Box flex={1}>
       <Center flex={1} bg={useColorModeValue('warmGray.50', 'coolGray.800')} />
@@ -25,10 +33,10 @@ const Footer = () => {
         shadow={6}>
         <Pressable
           cursor="pointer"
-          opacity={selected === 0 ? 1 : 0.5}
+          opacity={viewState === 0 ? 1 : 0.5}
           py="3"
           flex={1}
-          onPress={() => setSelected(0)}>
+          onPress={() => onPressHook(0)}>
           <Center>
             <SunIcon size="4" />
             <Text fontSize="12"> Pokedex </Text>
@@ -36,10 +44,10 @@ const Footer = () => {
         </Pressable>
         <Pressable
           cursor="pointer"
-          opacity={selected === 1 ? 1 : 0.5}
+          opacity={viewState === 1 ? 1 : 0.5}
           py="2"
           flex={1}
-          onPress={() => setSelected(1)}>
+          onPress={() => onPressHook(1)}>
           <Center>
             <MoonIcon size="4" />
             <Text fontSize="12">Moves</Text>
@@ -47,10 +55,10 @@ const Footer = () => {
         </Pressable>
         <Pressable
           cursor="pointer"
-          opacity={selected === 2 ? 1 : 0.6}
+          opacity={viewState === 2 ? 1 : 0.6}
           py="2"
           flex={1}
-          onPress={() => setSelected(2)}>
+          onPress={() => onPressHook(2)}>
           <Center>
             <SearchIcon size="4" />
             <Text fontSize="12">Type Chart</Text>
@@ -58,10 +66,10 @@ const Footer = () => {
         </Pressable>
         <Pressable
           cursor="pointer"
-          opacity={selected === 3 ? 1 : 0.5}
+          opacity={viewState === 3 ? 1 : 0.5}
           py="2"
           flex={1}
-          onPress={() => setSelected(3)}>
+          onPress={() => onPressHook(3)}>
           <Center>
             <CheckIcon size="4" />
             <Text fontSize="12">Abilities</Text>
@@ -69,10 +77,10 @@ const Footer = () => {
         </Pressable>
         <Pressable
           cursor="pointer"
-          opacity={selected === 4 ? 1 : 0.5}
+          opacity={viewState === 4 ? 1 : 0.5}
           py="2"
           flex={1}
-          onPress={() => setSelected(4)}>
+          onPress={() => onPressHook(4)}>
           <Center>
             <AddIcon size="4" />
             <Text fontSize="12">Items</Text>

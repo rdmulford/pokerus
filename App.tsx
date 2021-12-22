@@ -9,6 +9,7 @@ import {
 } from 'native-base';
 import {getBerry} from './src/api/berry';
 import Footer from './src/components/Footer';
+import GlobalStateProvider from './src/components/Global';
 
 function UseColorMode() {
   const {toggleColorMode} = useColorMode();
@@ -24,8 +25,10 @@ const App = () => {
 
   return (
     <NativeBaseProvider>
-      <UseColorMode />
-      <Footer />
+      <GlobalStateProvider>
+        <UseColorMode />
+        <Footer />
+      </GlobalStateProvider>
     </NativeBaseProvider>
   );
 };

@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    name: tests
     runs-on: macos-11
     steps:
       - uses: actions/checkout@v2

@@ -1,6 +1,7 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
 import {Box, Text, FlatList} from 'native-base';
+import {Pressable} from 'react-native';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([]);
@@ -28,9 +29,14 @@ const PokemonList = () => {
       data={pokemon}
       renderItem={({item}) => {
         return (
-          <Box p="5" m="1" rounded="8" bg="green.700">
-            <Text key={item.id}>{item.name}</Text>
-          </Box>
+          <Pressable
+            onPress={() => {
+              console.log(item.name);
+            }}>
+            <Box p="5" m="1" rounded="8" bg="green.700">
+              <Text key={item.id}>{item.name}</Text>
+            </Box>
+          </Pressable>
         );
       }}
     />

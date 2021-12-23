@@ -9,7 +9,7 @@ export const getPokemonList = async (): Promise<
     cacheOptions: {maxAge: 500000, exclude: {query: false}},
   });
   return await api
-    .listPokemons(0, 1200)
+    .listPokemonSpecies(0, 1200)
     .then(data => {
       return data.results;
     })

@@ -1,6 +1,7 @@
 import {useGlobalState} from './Global';
-import {Center, Text} from 'native-base';
+import {Text} from 'native-base';
 import React, {useEffect, useState} from 'react';
+import PokemonList from './PokemonList';
 
 // ViewManager handles the currently displayed view
 const ViewManager = () => {
@@ -17,7 +18,7 @@ const ViewManager = () => {
   const getView = (state: number) => {
     switch (state) {
       case 0: {
-        return <Text>Pokedex</Text>;
+        return <PokemonList />;
       }
       case 1: {
         return <Text>Moves</Text>;
@@ -37,7 +38,7 @@ const ViewManager = () => {
     }
   };
 
-  return <Center flex="1">{displayedView}</Center>;
+  return displayedView;
 };
 
 export default ViewManager;

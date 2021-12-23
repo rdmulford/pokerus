@@ -1,16 +1,16 @@
 import React from 'react';
-import {Box, NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider} from 'native-base';
 import Footer from './src/components/Footer';
 import GlobalStateProvider from './src/components/Global';
 import ViewManager from './src/components/ViewManager';
+import Header from './src/components/Header';
 
 const App = () => {
   return (
     <NativeBaseProvider>
       <GlobalStateProvider>
-        <Box safeAreaTop>
-          <ViewManager />
-        </Box>
+        <Header />
+        <ViewManager />
         <Footer />
       </GlobalStateProvider>
     </NativeBaseProvider>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {FlatList, Center, Box, Text} from 'native-base';
-import {Pressable} from 'react-native';
+import {FlatList, Pressable, Center, Box, Text} from 'native-base';
 import {titleCaseWord} from '../utils/capitalize';
 import {PokemonListData} from '../types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';

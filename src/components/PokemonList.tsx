@@ -1,7 +1,8 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {Box, Text, FlatList} from 'native-base';
+import {Box, Text, FlatList, Center} from 'native-base';
 import {Pressable} from 'react-native';
+import {titleCaseWord} from '../utils/capitalize';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([]);
@@ -9,7 +10,7 @@ const PokemonList = () => {
   const fetchPokemon = async () => {
     const data: any = await getPokemonList();
     const pokemons = data.map(mon => ({
-      name: mon.name,
+      name: titleCaseWord(mon.name),
       url: mon.url,
       id: Math.random().toString(12).substring(0),
     }));
@@ -33,8 +34,16 @@ const PokemonList = () => {
             onPress={() => {
               console.log(item.name);
             }}>
-            <Box p="5" m="1" rounded="8" bg="green.700">
-              <Text key={item.id}>{item.name}</Text>
+            <Box
+              p="2.5"
+              m="1"
+              w="109"
+              rounded="5"
+              bg="#d4d4d4"
+              borderColor="737373">
+              <Center>
+                <Text key={item.id}>{item.name}</Text>
+              </Center>
             </Box>
           </Pressable>
         );

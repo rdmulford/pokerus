@@ -1,15 +1,20 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {FlatList, Center} from 'native-base';
+import {FlatList, Center, Box, Text} from 'native-base';
 import {Pressable} from 'react-native';
 import {titleCaseWord} from '../utils/capitalize';
+import {PokemonListData} from '../types/pokemon';
+import {NamedAPIResource} from 'pokenode-ts';
 
 const PokemonList = () => {
-  const [pokemon, setPokemon] = React.useState([]);
+  const [pokemon, setPokemon] = React.useState([] as Array<NamedAPIResource>);
 
   const fetchPokemon = async () => {
-    const data: any = await getPokemonList();
-    const pokemons = data.map(mon => ({
+    const data: PokemonListData = await getPokemonList();
+    if (data === undefined) {
+      return;
+    }
+    const pokemons: NamedAPIResource[] = data.map(mon => ({
       name: titleCaseWord(mon.name),
       url: mon.url,
       id: Math.random().toString(12).substring(0),
@@ -18,37 +23,42 @@ const PokemonList = () => {
   };
 
   React.useEffect(() => {
-    console.log('no');
     fetchPokemon();
   }, []);
 
   return (
-    <FlatList
-      numColumns={3}
-      m={'8px'}
-      columnWrapperStyle={{justifyContent: 'space-around'}}
-      data={pokemon}
-      renderItem={({item}) => {
-        return (
-          <Pressable
-            onPress={() => {
-              console.log(item.name);
-            }}>
-            <Center
-              p="2"
-              m="1"
-              w="109"
-              h="109px"
-              rounded="5"
-              bg="#d4d4d4"
-              borderColor="737373"
-              key={item.id}>
-              {item.name}
-            </Center>
-          </Pressable>
-        );
-      }}
-    />
+    <Box>
+      {pokemon ? (
+        <FlatList
+          numColumns={3}
+          m={'8px'}
+          columnWrapperStyle={{justifyContent: 'space-around'}}
+          data={pokemon}
+          renderItem={({item}) => {
+            return (
+              <Pressable
+                onPress={() => {
+                  console.log(item.name);
+                }}>
+                <Center
+                  p="2"
+                  m="1"
+                  w="109"
+                  h="109px"
+                  rounded="5"
+                  bg="#d4d4d4"
+                  borderColor="737373"
+                  key={item.id}>
+                  {item.name}
+                </Center>
+              </Pressable>
+            );
+          }}
+        />
+      ) : (
+        <Text>Uh Oh!</Text>
+      )}
+    </Box>
   );
 };
 

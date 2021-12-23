@@ -13,6 +13,7 @@ import {
   useColorModeValue,
 } from 'native-base';
 import {useGlobalDispatch, useGlobalState} from './Global';
+import styled from 'styled-components/native';
 
 const Footer = () => {
   const [viewState] = useGlobalState();
@@ -23,8 +24,16 @@ const Footer = () => {
     console.log('Current view state: ', view);
   };
 
+  const Wrapper = styled(Box)`
+    flex: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  `;
+
   return (
-    <Box flex={1} style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
+    <Wrapper>
       <Center flex={1} bg={useColorModeValue('warmGray.50', 'coolGray.800')} />
       <HStack
         bg={useColorModeValue('warmGray.50', 'coolGray.800')}
@@ -87,7 +96,7 @@ const Footer = () => {
           </Center>
         </Pressable>
       </HStack>
-    </Box>
+    </Wrapper>
   );
 };
 

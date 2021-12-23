@@ -1,6 +1,6 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {Box, Text, FlatList, Center} from 'native-base';
+import {FlatList, Center} from 'native-base';
 import {Pressable} from 'react-native';
 import {titleCaseWord} from '../utils/capitalize';
 
@@ -34,17 +34,17 @@ const PokemonList = () => {
             onPress={() => {
               console.log(item.name);
             }}>
-            <Box
-              p="2.5"
+            <Center
+              p="2"
               m="1"
               w="109"
+              h="109px"
               rounded="5"
               bg="#d4d4d4"
-              borderColor="737373">
-              <Center>
-                <Text key={item.id}>{item.name}</Text>
-              </Center>
-            </Box>
+              borderColor="737373"
+              key={item.id}>
+              {item.name}
+            </Center>
           </Pressable>
         );
       }}

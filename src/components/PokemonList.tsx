@@ -14,7 +14,7 @@ const PokemonList = () => {
       return;
     }
     const pokemons: NamedAPIResource[] = data.map(mon => ({
-      name: titleCaseWord(mon.name),
+      name: mon.name,
       url: mon.url,
       id: Math.random().toString(12).substring(0),
     }));
@@ -48,7 +48,7 @@ const PokemonList = () => {
                   bg="#d4d4d4"
                   borderColor="737373"
                   key={item.id}>
-                  {item.name}
+                  {titleCaseWord(item.name)}
                 </Center>
               </Pressable>
             );

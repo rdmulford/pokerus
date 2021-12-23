@@ -1,6 +1,6 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {Box, ScrollView, HStack, VStack, Text} from 'native-base';
+import {Box, Text, FlatList} from 'native-base';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([]);
@@ -21,17 +21,19 @@ const PokemonList = () => {
   }, []);
 
   return (
-    <ScrollView>
-      <Box overflow={'hidden'}>
-        <VStack space={3} w="90%">
-          {pokemon.map(mon => (
-            <HStack justifyContent="space-between">
-              <Text key={mon.id}>{mon.name}</Text>
-            </HStack>
-          ))}
-        </VStack>
-      </Box>
-    </ScrollView>
+    <FlatList
+      numColumns={3}
+      m={'8px'}
+      columnWrapperStyle={{justifyContent: 'space-around'}}
+      data={pokemon}
+      renderItem={({item}) => {
+        return (
+          <Box p="5" m="1" rounded="8" bg="green.700">
+            <Text key={item.id}>{item.name}</Text>
+          </Box>
+        );
+      }}
+    />
   );
 };
 

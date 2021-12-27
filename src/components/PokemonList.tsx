@@ -1,8 +1,8 @@
 import React from 'react';
-import {getPokemonList} from '../api/pokemon';
+import {getPokemonList} from 'api/pokemon';
 import {FlatList, Pressable, Center, Box, Text, Image} from 'native-base';
-import {getPokeNum, titleCaseWord} from '../utils/utils';
-import {PokemonListData} from '../types/pokemon';
+import {getPokeNum, titleCaseWord} from 'utils/utils';
+import {PokemonListData} from 'types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 import styled from 'styled-components/native';
 

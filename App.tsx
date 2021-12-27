@@ -1,18 +1,14 @@
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
-import Footer from './src/components/Footer';
-import GlobalStateProvider from './src/components/Global';
-import ViewManager from './src/components/ViewManager';
-import Header from './src/components/Header';
+import {NavigationContainer} from '@react-navigation/native';
+import NavigationManager from './src/components/Navigation';
 
 const App = () => {
   return (
     <NativeBaseProvider>
-      <GlobalStateProvider>
-        <Header />
-        <ViewManager />
-        <Footer />
-      </GlobalStateProvider>
+      <NavigationContainer>
+        <NavigationManager />
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 };

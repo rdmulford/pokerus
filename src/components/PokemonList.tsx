@@ -1,12 +1,11 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {FlatList, Pressable, Center, Box, Text, Image} from 'native-base';
-import { PokemonCard } from './PokemonCard';
-import {getPokeNum, titleCaseWord} from '../utils/utils';
+import {FlatList, Box, Text} from 'native-base';
+import {PokemonCard} from './PokemonCard';
+import {getPokeNum} from '../utils/utils';
 import {PokemonListData} from '../types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 import styled from 'styled-components/native';
-import { ItemClick } from 'native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([] as Array<NamedAPIResource>);
@@ -45,9 +44,14 @@ const PokemonList = () => {
           numColumns={3}
           m={'8px'}
           data={pokemon}
-          renderItem={({item}) => 
-            <PokemonCard name={item.name} url={item.url} img={item.img} id={item.id}/>
-          }
+          renderItem={({item}) => (
+            <PokemonCard
+              name={item.name}
+              url={item.url}
+              img={item.img}
+              id={item.id}
+            />
+          )}
         />
       ) : (
         <Text>Uh Oh!</Text>

@@ -1,18 +1,22 @@
 import React from 'react';
-import { Center, Image, Pressable } from 'native-base';
-import { titleCaseWord } from '../utils/utils';
+import {Center, Image, Pressable} from 'native-base';
+import {titleCaseWord} from '../utils/utils';
 
-export interface PokemonCardProps { name: string, url: string, id: string, img: string }
+export interface PokemonCardProps {
+  name: string;
+  url: string;
+  id: string;
+  img: string;
+}
 
-export class PokemonCard extends React.PureComponent<PokemonCardProps> { 
-
+export class PokemonCard extends React.PureComponent<PokemonCardProps> {
   render() {
-    const { name, url, id, img } = this.props;
+    const {name, url, id, img} = this.props;
 
     return (
-        <Pressable
-            onPress={() => {
-            console.log(url);
+      <Pressable
+        onPress={() => {
+          console.log(url);
         }}>
         <Center
           p="2"
@@ -30,8 +34,7 @@ export class PokemonCard extends React.PureComponent<PokemonCardProps> {
           />
           {titleCaseWord(name)}
         </Center>
-        </Pressable>
-    )
+      </Pressable>
+    );
   }
-
-};
+}

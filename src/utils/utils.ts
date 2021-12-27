@@ -4,7 +4,7 @@ export const getPokeNum = (url: string) => {
   }
   const url_arr: Array<string> = url.split('/');
   const num: string = url_arr[url_arr.length - 2];
-  return parseInt(num);
+  return parseInt(num, 10);
 };
 
 export const titleCaseWord = (word: string) => {

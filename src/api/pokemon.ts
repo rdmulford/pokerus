@@ -1,5 +1,5 @@
 import {NamedAPIResource, PokemonClient} from 'pokenode-ts';
-import {PokemonListData} from '../types/pokemon';
+import {PokemonListData} from '@types/pokemon';
 
 // getPokemonList returns a list of all pokemon
 export const getPokemonList = async (): Promise<PokemonListData> => {

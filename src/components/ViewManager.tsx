@@ -1,7 +1,7 @@
-import {useGlobalState} from './Global';
+import {useGlobalState} from 'components/Global';
 import {Text} from 'native-base';
 import React, {useEffect, useState} from 'react';
-import PokemonList from './PokemonList';
+import PokemonList from 'components/PokemonList';
 
 // ViewManager handles the currently displayed view
 const ViewManager = () => {

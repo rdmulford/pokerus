@@ -12,7 +12,7 @@ import {
   AddIcon,
   useColorModeValue,
 } from 'native-base';
-import {useGlobalDispatch, useGlobalState} from './Global';
+import {useGlobalDispatch, useGlobalState} from 'components/Global';
 import styled from 'styled-components/native';
 
 const Footer = () => {

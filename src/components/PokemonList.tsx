@@ -1,7 +1,7 @@
 import React from 'react';
 import {getPokemonList} from '../api/pokemon';
-import {FlatList, Pressable, Center, Box, Text} from 'native-base';
-import {titleCaseWord} from '../utils/capitalize';
+import {FlatList, Pressable, Center, Box, Text, Image} from 'native-base';
+import {getPokeNum, titleCaseWord} from '../utils/utils';
 import {PokemonListData} from '../types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 
@@ -17,6 +17,9 @@ const PokemonList = () => {
       name: mon.name,
       url: mon.url,
       id: Math.random().toString(12).substring(0),
+      img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
+        mon.url,
+      )}.png`,
     }));
     setPokemon(pokemons);
   };
@@ -48,6 +51,11 @@ const PokemonList = () => {
                   bg="#d4d4d4"
                   borderColor="737373"
                   key={item.id}>
+                  <Image
+                    source={{uri: item.img}}
+                    style={{width: 90, height: 90}}
+                    alt={item.name}
+                  />
                   {titleCaseWord(item.name)}
                 </Center>
               </Pressable>

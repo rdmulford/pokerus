@@ -4,9 +4,17 @@ import {FlatList, Pressable, Center, Box, Text} from 'native-base';
 import {titleCaseWord} from '../utils/capitalize';
 import {PokemonListData} from '../types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
+import styled from 'styled-components/native';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([] as Array<NamedAPIResource>);
+
+  const StyledFlatList = styled(FlatList).attrs(() => ({
+    contentContainerStyle: {
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    },
+  }))``;
 
   const fetchPokemon = async () => {
     const data: PokemonListData = await getPokemonList();
@@ -28,10 +36,9 @@ const PokemonList = () => {
   return (
     <Box>
       {pokemon ? (
-        <FlatList
+        <StyledFlatList
           numColumns={3}
           m={'8px'}
-          columnWrapperStyle={{justifyContent: 'space-around'}}
           data={pokemon}
           renderItem={({item}) => {
             return (

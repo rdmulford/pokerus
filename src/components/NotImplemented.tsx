@@ -13,7 +13,7 @@ const NotImpl = (props: NotImplProps) => {
   return (
     <Box>
       <Center>
-        This feature has not been implmeneted yet.
+        This feature has not been implemented yet.
         {props.route.params?.name}
         <Button onPress={() => props.navigation.goBack()}>Go Back</Button>
       </Center>

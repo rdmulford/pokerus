@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {IconButton, ThreeDotsIcon} from 'native-base';
-import NotImpl from 'components/NotImplmented';
+import NotImpl from 'components/NotImplemented';
 import PokedexNavigator from 'components/PokedexNavigator';
 
 const TabNavigator = () => {

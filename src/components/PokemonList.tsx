@@ -6,6 +6,9 @@ import {getPokeNum} from '../utils/utils';
 import {PokemonListData} from '../types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 import styled from 'styled-components/native';
+import {Image} from 'react-native';
+// @ts-ignore
+import {DEV_MODE} from 'react-native-dotenv';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = React.useState([] as Array<NamedAPIResource>);
@@ -22,13 +25,17 @@ const PokemonList = () => {
     if (data === undefined) {
       return;
     }
+    console.log(DEV_MODE);
     const pokemons: NamedAPIResource[] = data.map(mon => ({
       name: mon.name,
       url: mon.url,
       id: Math.random().toString(12).substring(0),
-      img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
-        mon.url,
-      )}.png`,
+      img:
+        DEV_MODE === 'true'
+          ? Image.resolveAssetSource(require('../assets/1.png')).uri
+          : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
+              mon.url,
+            )}.png`,
     }));
     setPokemon(pokemons);
   };

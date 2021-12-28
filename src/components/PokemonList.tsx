@@ -1,9 +1,9 @@
 import React from 'react';
-import {getPokemonList} from '../api/pokemon';
+import {getPokemonList} from 'api/pokemon';
 import {FlatList, Box, Text} from 'native-base';
-import {PokemonCard} from './PokemonCard';
-import {getPokeNum} from '../utils/utils';
-import {PokemonListData} from '../types/pokemon';
+import {PokemonCard} from 'components/PokemonCard';
+import {getPokeNum} from 'utils/utils';
+import {PokemonListData} from 'types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import styled from 'styled-components/native';

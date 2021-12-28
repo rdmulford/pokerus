@@ -1,22 +1,29 @@
 import React from 'react';
 import {Center, Image, Pressable} from 'native-base';
-import {titleCaseWord} from '../utils/utils';
+import {titleCaseWord} from 'utils/utils';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 export interface PokemonCardProps {
   name: string;
   url: string;
   id: string;
   img: string;
+  navigation: NativeStackNavigationProp<any, any>;
 }
 
 export class PokemonCard extends React.PureComponent<PokemonCardProps> {
   render() {
-    const {name, url, id, img} = this.props;
+    const {name, url, id, img, navigation} = this.props;
 
     return (
       <Pressable
         onPress={() => {
-          console.log(url);
+          navigation.navigate('PokemonDetails', {
+            name: name,
+            url: url,
+            id: id,
+            img: img,
+          });
         }}>
         <Center
           p="2"

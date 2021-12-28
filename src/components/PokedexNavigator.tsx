@@ -12,7 +12,11 @@ const PokedexNavigator = () => {
         component={PokemonList}
         options={{headerShown: false}}
       />
-      <PokedexStack.Screen name="PokemonDetails" component={NotImpl} />
+      <PokedexStack.Screen
+        name="PokemonDetails"
+        component={NotImpl}
+        options={{headerShown: false}}
+      />
     </PokedexStack.Navigator>
   );
 };

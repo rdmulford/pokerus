@@ -1,16 +1,21 @@
 import React from 'react';
-import {getPokemonList} from '../api/pokemon';
+import {getPokemonList} from 'api/pokemon';
 import {FlatList, Box, Text} from 'native-base';
-import {PokemonCard} from './PokemonCard';
-import {getPokeNum} from '../utils/utils';
-import {PokemonListData} from '../types/pokemon';
+import {PokemonCard} from 'components/PokemonCard';
+import {getPokeNum} from 'utils/utils';
+import {PokemonListData} from 'types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
 import {Image} from 'react-native';
 // @ts-ignore
 import {DEV_MODE} from 'react-native-dotenv';
 
-const PokemonList = () => {
+export interface PokemonListProps {
+  navigation: NativeStackNavigationProp<any, any>;
+}
+
+const PokemonList = (props: PokemonListProps) => {
   const [pokemon, setPokemon] = React.useState([] as Array<NamedAPIResource>);
 
   const StyledFlatList = styled(FlatList).attrs(() => ({
@@ -57,6 +62,7 @@ const PokemonList = () => {
               url={item.url}
               img={item.img}
               id={item.id}
+              navigation={props.navigation}
             />
           )}
         />

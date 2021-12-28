@@ -1,13 +1,13 @@
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
-import NavigationManager from './src/components/Navigation';
+import TabNavigator from 'components/TabNavigator';
 
 const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <NavigationManager />
+        <TabNavigator />
       </NavigationContainer>
     </NativeBaseProvider>
   );

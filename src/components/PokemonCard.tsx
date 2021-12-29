@@ -2,6 +2,7 @@ import React from 'react';
 import {Center, Image, Pressable} from 'native-base';
 import {titleCaseWord} from 'utils/utils';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import styled from 'styled-components/native';
 
 export interface PokemonCardProps {
   name: string;
@@ -10,6 +11,11 @@ export interface PokemonCardProps {
   img: string;
   navigation: NativeStackNavigationProp<any, any>;
 }
+
+const StyledImage = styled(Image)`
+  width: 90px;
+  height: 90px;
+`;
 
 export class PokemonCard extends React.PureComponent<PokemonCardProps> {
   render() {
@@ -34,11 +40,7 @@ export class PokemonCard extends React.PureComponent<PokemonCardProps> {
           bg="#d4d4d4"
           borderColor="737373"
           key={id}>
-          <Image
-            source={{uri: img}}
-            style={{width: 90, height: 90}}
-            alt={name}
-          />
+          <StyledImage source={{uri: img}} alt={name} />
           {titleCaseWord(name)}
         </Center>
       </Pressable>

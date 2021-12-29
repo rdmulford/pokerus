@@ -4,8 +4,8 @@ import {Box, VStack, Text, Image, Center} from 'native-base';
 import {getPokemon} from 'api/pokemon';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
-import {titleCaseWord} from 'utils/utils';
 import Error from 'components/Error';
+import {getImageBasedOnMode, titleCaseWord} from 'utils/utils';
 
 export interface PokemonDetailProps {
   route: RouteProp<any>;
@@ -17,15 +17,20 @@ const PokemonDetail = (props: PokemonDetailProps) => {
 
   React.useEffect(() => {
     const fetchPokemonDetail = async () => {
+      if (props.route.params === undefined) {
+        console.error('pokemon detail sent undefined props');
+        return;
+      }
       const data: PokemonData = await getPokemon(props.route.params.name);
       if (data === undefined) {
+        console.error('undefined response from get pokemon api');
         return;
       }
       console.log(data.sprites);
       setPokemon(data);
     };
     fetchPokemonDetail();
-  }, [props.route.params.name]);
+  }, [props.route.params]);
 
   return (
     <Box>
@@ -34,8 +39,10 @@ const PokemonDetail = (props: PokemonDetailProps) => {
           <Center>
             <Image
               source={{
-                uri: pokemon.sprites.other['official-artwork']
-                  .front_default as any,
+                uri: getImageBasedOnMode(
+                  pokemon.sprites.other['official-artwork']
+                    .front_default as string,
+                ),
               }}
               size={200}
               alt={pokemon.forms[0].name}

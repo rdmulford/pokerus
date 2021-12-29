@@ -2,14 +2,11 @@ import React from 'react';
 import {getPokemonList} from 'api/pokemon';
 import {FlatList, Box} from 'native-base';
 import {PokemonCard} from 'components/PokemonCard';
-import {getPokeNum} from 'utils/utils';
+import {getImageBasedOnMode, getPokeNum} from 'utils/utils';
 import {PokemonListData} from 'types/pokemon';
 import {NamedAPIResource} from 'pokenode-ts';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
-import {Image} from 'react-native';
-// @ts-ignore
-import {DEV_MODE} from 'react-native-dotenv';
 import Error from 'components/Error';
 
 export interface PokemonListProps {
@@ -31,17 +28,15 @@ const PokemonList = (props: PokemonListProps) => {
     if (data === undefined) {
       return;
     }
-    console.log(DEV_MODE);
     const pokemons: NamedAPIResource[] = data.map(mon => ({
       name: mon.name,
       url: mon.url,
       id: Math.random().toString(12).substring(0),
-      img:
-        DEV_MODE === 'true'
-          ? Image.resolveAssetSource(require('../assets/1.png')).uri
-          : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
-              mon.url,
-            )}.png`,
+      img: getImageBasedOnMode(
+        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
+          mon.url,
+        )}.png`,
+      ),
     }));
     setPokemon(pokemons);
   };

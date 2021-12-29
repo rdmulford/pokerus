@@ -1,6 +1,7 @@
 import React from 'react';
 import {Stat} from 'types/pokemon';
 import {Box, Text, FlatList} from 'native-base';
+import {formatStatName} from 'api/pokemon';
 
 export const PokemonDetailStats = (props: Array<Stat>) => {
   console.log(props);
@@ -10,7 +11,7 @@ export const PokemonDetailStats = (props: Array<Stat>) => {
         data={props.items}
         renderItem={({item}) => (
           <Text>
-            {item.name.toUpperCase()}: {item.value} - Min: {item.min} - Max:{' '}
+            {formatStatName(item.name)}: {item.value} - Min: {item.min} - Max:{' '}
             {item.max}
           </Text>
         )}

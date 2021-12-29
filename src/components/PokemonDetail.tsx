@@ -1,10 +1,11 @@
 import React from 'react';
 import {PokemonData} from 'types/pokemon';
 import {Box, VStack, Text, Image, Center} from 'native-base';
-import {getPokemon} from 'api/pokemon';
+import {getPokemon, formatStats} from 'api/pokemon';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
 import {getImageBasedOnMode, titleCaseWord} from 'utils/utils';
+import {PokemonDetailStats} from 'components/PokemonDetailStats';
 
 export interface PokemonDetailProps {
   route: RouteProp<any>;
@@ -23,9 +24,10 @@ const PokemonDetail = (props: PokemonDetailProps) => {
       const data: PokemonData = await getPokemon(props.route.params.name);
       if (data === undefined) {
         console.error('undefined response from get pokemon api');
+        setPokemon(undefined);
         return;
       }
-      console.log(data.sprites);
+      console.log(JSON.stringify(data.stats));
       setPokemon(data);
     };
     fetchPokemonDetail();
@@ -54,6 +56,7 @@ const PokemonDetail = (props: PokemonDetailProps) => {
               <Text>Height: {pokemon.height / 10} m</Text>
             </Center>
           </Center>
+          <PokemonDetailStats items={formatStats(pokemon.stats)} />
         </VStack>
       ) : (
         <Text>Uh Oh!</Text>

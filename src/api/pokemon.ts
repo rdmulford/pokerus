@@ -1,5 +1,5 @@
-import {NamedAPIResource, PokemonClient, Pokemon} from 'pokenode-ts';
-import {PokemonListData} from 'types/pokemon';
+import {NamedAPIResource, PokemonClient} from 'pokenode-ts';
+import {PokemonListData, PokemonData} from 'types/pokemon';
 
 // getPokemonList returns a list of all pokemon
 export const getPokemonList = async (): Promise<PokemonListData> => {
@@ -17,7 +17,7 @@ export const getPokemonList = async (): Promise<PokemonListData> => {
     });
 };
 
-export const getPokemon = async (name: string): Promise<Pokemon> => {
+export const getPokemon = async (name: string): Promise<PokemonData> => {
   console.log(name);
   const api = new PokemonClient({
     cacheOptions: {maxAge: 500000, exclude: {query: false}},
@@ -25,7 +25,7 @@ export const getPokemon = async (name: string): Promise<Pokemon> => {
   return await api
     .getPokemonByName(name)
     .then(data => {
-      return data as Pokemon;
+      return data as PokemonData;
     })
     .catch(error => {
       console.error(error);

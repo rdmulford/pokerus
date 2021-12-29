@@ -1,6 +1,5 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-//import NotImpl from 'components/NotImplemented';
 import PokemonList from 'components/PokemonList';
 import PokemonDetail from './PokemonDetail';
 

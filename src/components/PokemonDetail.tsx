@@ -36,12 +36,12 @@ const PokemonDetail = (props: PokemonDetailProps) => {
                 uri: pokemon.sprites.other['official-artwork']
                   .front_default as any,
               }}
-              style={{width: 200, height: 200}}
+              size={200}
               alt={pokemon.forms[0].name}
             />
             <Center>
               <Text>
-                No. {pokemon.id}: {titleCaseWord(pokemon.name)}
+                No. {pokemon.id} - {titleCaseWord(pokemon.name)}
               </Text>
               <Text>Weight: {pokemon.weight / 10} Kg</Text>
               <Text>Height: {pokemon.height / 10} m</Text>

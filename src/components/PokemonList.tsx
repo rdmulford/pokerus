@@ -30,7 +30,7 @@ const PokemonList = (props: PokemonListProps) => {
     const pokemons: NamedAPIResource[] = data.map(mon => ({
       name: mon.name,
       url: mon.url,
-      id: Math.random().toString(12).substring(0),
+      id: getPokeNum(mon.url),
       img: getImageBasedOnMode(
         `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
           mon.url,

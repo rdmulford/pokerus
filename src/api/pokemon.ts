@@ -20,10 +20,10 @@ export const getPokemonList = async (): Promise<PokemonListData> => {
 };
 
 // getPokemon returns individual pokemon data
-export const getPokemon = async (name: string): Promise<PokemonData> => {
-  console.log(name);
+export const getPokemon = async (id: number): Promise<PokemonData> => {
+  console.log(id);
   return await api
-    .getPokemonByName(name)
+    .getPokemonById(id)
     .then(data => {
       return data as PokemonData;
     })

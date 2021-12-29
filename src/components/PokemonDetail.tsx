@@ -21,13 +21,13 @@ const PokemonDetail = (props: PokemonDetailProps) => {
         console.error('pokemon detail sent undefined props');
         return;
       }
-      const data: PokemonData = await getPokemon(props.route.params.name);
+      const data: PokemonData = await getPokemon(props.route.params.id);
       if (data === undefined) {
         console.error('undefined response from get pokemon api');
         setPokemon(undefined);
         return;
       }
-      console.log(JSON.stringify(data.stats));
+      console.log('Moves:' + JSON.stringify(data.moves));
       setPokemon(data);
     };
     fetchPokemonDetail();

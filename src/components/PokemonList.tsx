@@ -1,6 +1,6 @@
 import React from 'react';
 import {getPokemonList} from 'api/pokemon';
-import {FlatList, Box, Text} from 'native-base';
+import {FlatList, Box} from 'native-base';
 import {PokemonCard} from 'components/PokemonCard';
 import {getPokeNum} from 'utils/utils';
 import {PokemonListData} from 'types/pokemon';
@@ -10,6 +10,7 @@ import styled from 'styled-components/native';
 import {Image} from 'react-native';
 // @ts-ignore
 import {DEV_MODE} from 'react-native-dotenv';
+import Error from 'components/Error';
 
 export interface PokemonListProps {
   navigation: NativeStackNavigationProp<any, any>;
@@ -67,7 +68,7 @@ const PokemonList = (props: PokemonListProps) => {
           )}
         />
       ) : (
-        <Text>Uh Oh!</Text>
+        <Error err="undefined response from get pokemon list api" />
       )}
     </Box>
   );

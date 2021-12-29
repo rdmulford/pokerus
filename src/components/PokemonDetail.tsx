@@ -5,6 +5,7 @@ import {getPokemon} from 'api/pokemon';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RouteProp} from '@react-navigation/native';
 import {titleCaseWord} from 'utils/utils';
+import Error from 'components/Error';
 
 export interface PokemonDetailProps {
   route: RouteProp<any>;
@@ -49,7 +50,7 @@ const PokemonDetail = (props: PokemonDetailProps) => {
           </Center>
         </VStack>
       ) : (
-        <Text>Uh Oh!</Text>
+        <Error err="undefined response from get pokemon api" />
       )}
     </Box>
   );

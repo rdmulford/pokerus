@@ -70,3 +70,6 @@ buck-out/
 
 # lint
 .eslintcache
+
+# dotenv
+.env

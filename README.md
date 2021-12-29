@@ -7,6 +7,12 @@ pokedex app
 env setup: https://reactnative.dev/docs/environment-setup
 
 ```sh
+# setup dev env
+cp .env.example .env
+# adjust values in .env as needed
+
+# NOTE must reset yarn cache for env changes to take effect (ie: yarn start --reset-cache)
+
 # use node version
 nvm use
 

@@ -1,5 +1,5 @@
 import {NamedAPIResource, PokemonClient} from 'pokenode-ts';
-import {PokemonListData, PokemonData} from 'types/pokemon';
+import {PokemonData, PokemonListData} from 'types/pokemon';
 
 // initialize our client
 const api = new PokemonClient({
@@ -11,11 +11,15 @@ export const getPokemonList = async (): Promise<PokemonListData> => {
   return await api
     .listPokemonSpecies(0, 1200)
     .then(data => {
-      return data.results as NamedAPIResource[];
+      return {
+        data: data.results as NamedAPIResource[],
+      };
     })
-    .catch(error => {
-      console.error(error);
-      return undefined;
+    .catch((error: Error) => {
+      console.log(error);
+      return {
+        error: error.message,
+      };
     });
 };
 
@@ -25,10 +29,14 @@ export const getPokemon = async (name: string): Promise<PokemonData> => {
   return await api
     .getPokemonByName(name)
     .then(data => {
-      return data as PokemonData;
+      return {
+        data,
+      };
     })
-    .catch(error => {
-      console.error(error);
-      return undefined;
+    .catch((error: Error) => {
+      console.log(error);
+      return {
+        error: error.message,
+      };
     });
 };

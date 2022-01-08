@@ -2,11 +2,7 @@ import {Box, Center, Image} from 'native-base';
 import React from 'react';
 import {Image as NativeImage} from 'react-native';
 
-export interface ErrorProps {
-  err: string;
-}
-
-const Error = (props: ErrorProps) => {
+const Error = () => {
   return (
     <Box>
       <Center>
@@ -19,7 +15,7 @@ const Error = (props: ErrorProps) => {
             ).uri,
           }}
         />
-        Error: {props.err}
+        We encountered an error!
       </Center>
     </Box>
   );

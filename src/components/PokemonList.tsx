@@ -27,25 +27,26 @@ const PokemonList = (props: PokemonListProps) => {
   }))``;
 
   const fetchPokemon = async () => {
-    const pokemonListData: PokemonListData = await getPokemonList();
-    if (pokemonListData.error) {
+    try {
+      const pokemonListData: PokemonListData = await getPokemonList();
+      const pokemons: NamedAPIResource[] = (
+        pokemonListData.data as NamedAPIResource[]
+      ).map(mon => ({
+        name: mon.name,
+        url: mon.url,
+        id: Math.random().toString(12).substring(0),
+        img: getImageBasedOnMode(
+          `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
+            mon.url,
+          )}.png`,
+        ),
+      }));
+      setPokemon(pokemons);
+      setLoading(false);
+    } catch (error) {
       setLoading(false);
       return;
     }
-    const pokemons: NamedAPIResource[] = (
-      pokemonListData.data as NamedAPIResource[]
-    ).map(mon => ({
-      name: mon.name,
-      url: mon.url,
-      id: Math.random().toString(12).substring(0),
-      img: getImageBasedOnMode(
-        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getPokeNum(
-          mon.url,
-        )}.png`,
-      ),
-    }));
-    setPokemon(pokemons);
-    setLoading(false);
   };
 
   React.useEffect(() => {

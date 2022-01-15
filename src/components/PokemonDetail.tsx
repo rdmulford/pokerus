@@ -19,15 +19,16 @@ const PokemonDetail = (props: PokemonDetailProps) => {
 
   React.useEffect(() => {
     const fetchPokemonDetail = async () => {
-      const pokemonData: PokemonData = await getPokemon(
-        props.route?.params?.name,
-      );
-      if (pokemonData.error) {
+      try {
+        const pokemonData: PokemonData = await getPokemon(
+          props.route?.params?.name,
+        );
+        setPokemon(pokemonData.data as Pokemon);
+        setLoading(false);
+      } catch (error) {
         setLoading(false);
         return;
       }
-      setPokemon(pokemonData.data as Pokemon);
-      setLoading(false);
     };
     fetchPokemonDetail();
   }, [props.route.params]);
@@ -63,7 +64,6 @@ const PokemonDetail = (props: PokemonDetailProps) => {
           </Center>
         </Center>
       </VStack>
-      )
     </Box>
   );
 };

@@ -1,4 +1,9 @@
 import {NamedAPIResource, Pokemon} from 'pokenode-ts';
 
-export type PokemonListData = NamedAPIResource[] | undefined;
-export type PokemonData = Pokemon | undefined;
+export interface PokemonListData {
+  data?: NamedAPIResource[];
+}
+
+export interface PokemonData {
+  data?: Pokemon;
+}

@@ -24,10 +24,10 @@ const PokemonDetail = (props: PokemonDetailProps) => {
           props.route?.params?.name,
         );
         setPokemon(pokemonData.data as Pokemon);
-        setLoading(false);
       } catch (error) {
+        console.log(error);
+      } finally {
         setLoading(false);
-        return;
       }
     };
     fetchPokemonDetail();

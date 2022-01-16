@@ -42,10 +42,11 @@ const PokemonList = (props: PokemonListProps) => {
         ),
       }));
       setPokemon(pokemons);
-      setLoading(false);
     } catch (error) {
-      setLoading(false);
+      console.log(error);
       return;
+    } finally {
+      setLoading(false);
     }
   };
 

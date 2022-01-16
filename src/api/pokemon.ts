@@ -16,7 +16,6 @@ export const getPokemonList = async (): Promise<PokemonListData> => {
       };
     })
     .catch((error: Error) => {
-      console.log(error);
       throw error;
     });
 };
@@ -32,7 +31,6 @@ export const getPokemon = async (name: string): Promise<PokemonData> => {
       };
     })
     .catch((error: Error) => {
-      console.log(error);
       throw error;
     });
 };
